@@ -1,0 +1,30 @@
+{
+  "name": "xidi_node_server",
+  "version": "1.0.0",
+  "description": "喜地后端node模块",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "node_server": "nodemon ./src/main.js"
+  },
+  "keywords": [
+    "xidi_demo"
+  ],
+  "author": "leng_da_yu",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "koa": "^2.14.1",
+    "koa-router": "^12.0.0",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.14.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^12.0.0",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20"
+  }
+}
