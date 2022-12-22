@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 const { PRIVATE_KEY } = require("../app/config");
-const { getUserById } = require("../service/user.service");
 
 class authController {
   async login(ctx, next) {

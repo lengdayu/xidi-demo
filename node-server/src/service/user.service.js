@@ -1,18 +1,15 @@
 const connection = require("../app/database");
 
 class UserService {
-  async create(user) {
-    const { userId, passWord } = user;
-    const statement = `INSERT INTO user (userId, passWord) VALUES (?, ?);`;
-    const result = await connection.execute(statement, [userId, passWord]);
-
+  async createUser(userInfo) {
+    const statement = `INSERT INTO user SET ?;`;
+    const result = await connection.query(statement, userInfo);
     return result[0];
   }
 
   async getUserById(userId) {
     const statement = `SELECT * FROM user WHERE userId = ?;`;
     const result = await connection.execute(statement, [userId]);
-
     return result[0];
   }
 
