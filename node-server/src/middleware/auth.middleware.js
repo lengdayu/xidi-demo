@@ -31,12 +31,11 @@ const verifyLogin = async (ctx, next) => {
   // }
 
   ctx.user = user;
-  console.log("通过用户账号密码校验");
+  console.log(`${user.userId} 通过用户账号密码校验`);
   await next();
 };
 
 const verifyAuth = async (ctx, next) => {
-  console.log("验证token的middleware~");
   // 1.获取token
   const authorization = ctx.headers.authorization;
   if (!authorization) {
@@ -51,6 +50,7 @@ const verifyAuth = async (ctx, next) => {
       algorithms: ["RS256"],
     });
     ctx.user = result;
+    console.log("通过验证token的middleware~");
     await next();
   } catch (err) {
     const error = new Error(errorTypes.UNAUTHORIZATION);

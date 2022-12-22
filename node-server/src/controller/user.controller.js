@@ -1,4 +1,7 @@
+const fs = require("fs");
 const { getUserById, createUser } = require("../service/user.service");
+const fileService = require("../service/file.service");
+const { AVATAR_PATH } = require("../constants/file-path");
 
 class userController {
   //用户创建
@@ -38,6 +41,17 @@ class userController {
         message: "查询失败",
       };
     }
+  }
+
+  //查询头像信息
+  async avatarInfo(ctx, next) {
+    // 1.用户的头像是哪一个文件呢?
+    const { userId } = ctx.params;
+    const avatarInfo = await fileService.getAvatarByUserId(userId);
+
+    // 2.提供图像信息
+    ctx.response.set("content-type", avatarInfo.mimetype);
+    ctx.body = fs.createReadStream(`${AVATAR_PATH}/${avatarInfo.filename}`);
   }
 }
 module.exports = new userController();
