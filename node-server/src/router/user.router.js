@@ -15,6 +15,6 @@ const { saveAvatarInfo } = require("../controller/file.controller");
 userRouter.post("/create", create); //创建用户
 userRouter.get("/detail", verifyAuth, userDetail); //查询用户信息
 userRouter.post("/updateAvatar", verifyAuth, avatarHandler, saveAvatarInfo); //创建用户头像
-userRouter.get("/:userId/avatar", verifyAuth, avatarInfo); //查询用户头像
+userRouter.get("/:userId/avatar", verifyAuth, avatarInfo); //下载用户头像
 
 module.exports = userRouter;
